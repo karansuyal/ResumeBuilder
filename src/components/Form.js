@@ -11,8 +11,11 @@ const Form = ({ resumeData, setResumeData }) => {
   };
 
   const addToArray = (key, value, clearFunc) => {
-    setResumeData({ ...resumeData, [key]: [...resumeData[key], value] });
-    clearFunc("");
+    // Ensure that the input value is not empty
+    if (value.trim() !== "") {
+      setResumeData({ ...resumeData, [key]: [...resumeData[key], value] });
+      clearFunc(""); // Clear the input after adding
+    }
   };
 
   return (
@@ -57,7 +60,9 @@ const Form = ({ resumeData, setResumeData }) => {
         value={education}
         onChange={(e) => setEducation(e.target.value)}
       />
-      <button onClick={() => addToArray("education", education, setEducation)}>
+      <button
+        onClick={() => addToArray("education", education, setEducation)}
+      >
         Add
       </button>
       <br />
@@ -69,7 +74,9 @@ const Form = ({ resumeData, setResumeData }) => {
         value={experience}
         onChange={(e) => setExperience(e.target.value)}
       />
-      <button onClick={() => addToArray("experience", experience, setExperience)}>
+      <button
+        onClick={() => addToArray("experience", experience, setExperience)}
+      >
         Add
       </button>
       <br />
@@ -81,7 +88,9 @@ const Form = ({ resumeData, setResumeData }) => {
         value={projects}
         onChange={(e) => setProjects(e.target.value)}
       />
-      <button onClick={() => addToArray("projects", projects, setProjects)}>
+      <button
+        onClick={() => addToArray("projects", projects, setProjects)}
+      >
         Add
       </button>
       <br />
